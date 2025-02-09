@@ -9,11 +9,11 @@ function App() {
   return (
       <Container>
         <Row>
-          <Card />
-          <Card />
+          <Card></Card>
+          <Card></Card>
         </Row>
         <Row className='mt-2'>
-          <Card />
+          <Card></Card>
         </Row>
       </Container>
   )
