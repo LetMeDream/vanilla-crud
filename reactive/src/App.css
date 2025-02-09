@@ -1,0 +1,15 @@
+body, #root {
+  font-family: 'Space Grotesk', sans-serif;
+  background-color: #141C29;
+  color:white;
+  width: 100vw;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+}
+
+.section {
+  background-color: #2D4263;
+  padding: 40px;
+  border-radius: 4.5px;
+}
