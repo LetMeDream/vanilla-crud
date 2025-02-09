@@ -1,19 +1,20 @@
 import './App.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Row, Container } from 'react-bootstrap'
-import Card from './components/Card/Card';
-
+import AddProduct from './components/Sections/AddProduct/AddProduct';
+import EditProduct from './components/Sections/EditProduct/EditProduct';
+import DeleteProduct from './components/Sections/DeleteProduct/DeleteProduct';
 
 function App() {
 
   return (
       <Container>
         <Row>
-          <Card></Card>
-          <Card></Card>
+          <AddProduct />
+          <EditProduct />
         </Row>
         <Row className='mt-2'>
-          <Card></Card>
+          <DeleteProduct />
         </Row>
       </Container>
   )
