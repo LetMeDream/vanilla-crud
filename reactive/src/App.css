@@ -17,6 +17,7 @@ body, #root {
   background-color: #2D4263;
   padding: 40px;
   border-radius: 4.5px;
+  height: 100%;
 }
 
 .input, .btn-send {
