@@ -1,20 +1,17 @@
-import './Card.css'
-import { Col } from 'react-bootstrap'
 import PropTypes from 'prop-types'
 
 
-const Card = ({ children }) => {
+const Card = ({ children, classname }) => {
   return (
-    <Col>
-      <div className="section">
+      <div className={`section ${classname}`}>
         { children || 'Empty section. Provide content.' }
       </div>
-    </Col> 
   )
 }
 
 Card.propTypes = {
-  children: PropTypes.node
+  children: PropTypes.node,
+  classname: PropTypes.string
 }
 
 export default Card
