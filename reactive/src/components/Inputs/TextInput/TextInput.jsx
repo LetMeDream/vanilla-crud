@@ -6,7 +6,8 @@ const TextInput = ({
   title,
   type,
   id,
-  placeholder
+  placeholder,
+  register
  }) => {
   return (
     <Form.Group className='input my-3'>
@@ -14,6 +15,7 @@ const TextInput = ({
         {title}
       </Form.Text>
       <Form.Control
+        {...(register ? register(id) : {})} /* <- Condicional para evitar que 'TextInputs' sin 'register' crasheen. */
         size='sm'
         type={type}
         id={id}
@@ -24,11 +26,13 @@ const TextInput = ({
   )
 }
 
+/* Propiedades que espera recibir el componente. */
 TextInput.propTypes = {
   title: PropTypes.string,
   type: PropTypes.string,
   id: PropTypes.string,
-  placeholder: PropTypes.string
+  placeholder: PropTypes.string,
+  register: PropTypes.func
 }
 
 export default TextInput
