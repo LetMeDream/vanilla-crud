@@ -3,6 +3,7 @@ import { Col } from "react-bootstrap"
 import SelectInput from "../../Inputs/SelectInput/SelectInput"
 import TextInput from "../../Inputs/TextInput/TextInput"
 import PropTypes from "prop-types"
+import {Button} from "react-bootstrap"
 
 const EditProduct = ({
   xs,
@@ -37,6 +38,12 @@ const EditProduct = ({
           placeholder={'Nuevo valor'}
         />
         {/* new value end */}
+        {/* Nombre end */}
+        <div className="flex">
+          <Button className="btn-send" variant="outline-light" size="sm">
+            Editar
+          </Button>
+        </div>
       </Card>
     </Col>
     )

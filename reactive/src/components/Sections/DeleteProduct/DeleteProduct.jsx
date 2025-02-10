@@ -2,6 +2,7 @@ import Card from "../../Card/Card"
 import { Col } from "react-bootstrap"
 import PropTypes from "prop-types"
 import SelectInput from "../../Inputs/SelectInput/SelectInput"
+import {Button} from "react-bootstrap"
 
 const DeleteProduct = ({
   xs,
@@ -18,9 +19,15 @@ const DeleteProduct = ({
         </h1>
         {/* Atributo start */}
         <SelectInput 
-          title={'Atributo'}
-          itemToSelect={'atributo'}
+          title={'Producto'}
+          itemToSelect={'producto'}
         />  
+        {/* Nombre end */}
+        <div className="flex">
+          <Button className="btn-send" variant="outline-light" size="sm">
+            Añadir
+          </Button>
+        </div>
       </Card>
     </Col>
   )
