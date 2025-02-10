@@ -1,11 +1,53 @@
 import Card from "../../Card/Card"
+import { Col } from "react-bootstrap"
+import SelectInput from "../../Inputs/SelectInput/SelectInput"
+import TextInput from "../../Inputs/TextInput/TextInput"
+import PropTypes from "prop-types"
 
-const EditProduct = () => {
+const EditProduct = ({
+  xs,
+  sm,
+  md, 
+  lg, 
+  classnames
+}) => {
   return (
-      <Card>
-        Acá van como 4 inputs
+    <Col  xs={xs} sm={sm} md={md} lg={lg}>
+      <Card classnames={classnames}>  
+        <h1 className="section-title">
+          Editar
+        </h1>
+        {/* Producto start */}
+        <SelectInput 
+          title={'Producto'}
+          itemToSelect={'producto'}
+        />
+        {/* Producto start */}
+        {/* Atributo start */}
+        <SelectInput 
+          title={'Atributo'}
+          itemToSelect={'atributo'}
+        />  
+        {/* Atributo end */}
+        {/* new value start */}
+        <TextInput
+          title='Nuevo valor'
+          type='text'
+          id='product-new-value'
+          placeholder={'Nuevo valor'}
+        />
+        {/* new value end */}
       </Card>
+    </Col>
     )
+}
+
+EditProduct.propTypes = {
+  xs: PropTypes.number,
+  sm: PropTypes.number,
+  md: PropTypes.number,
+  lg: PropTypes.number,
+  classnames: PropTypes.string
 }
 
 export default EditProduct
