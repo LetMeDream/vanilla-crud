@@ -6,7 +6,7 @@ import DeleteProduct from '../../components/Sections/DeleteProduct/DeleteProduct
 const ShoppingCar = () => {
   return (
     <>
-      <h1 className='app-title'>
+      <h1 className='shopping-car-title'>
         Shopping Car
       </h1>
       <Container>
