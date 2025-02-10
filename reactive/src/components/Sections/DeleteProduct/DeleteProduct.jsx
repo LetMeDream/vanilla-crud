@@ -25,7 +25,7 @@ const DeleteProduct = ({
         {/* Nombre end */}
         <div className="flex">
           <Button className="btn-send" variant="outline-light" size="sm">
-            Añadir
+            Eliminar
           </Button>
         </div>
       </Card>

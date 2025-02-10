@@ -3,6 +3,7 @@ import TextInput from "../../Inputs/TextInput/TextInput"
 import { Col } from "react-bootstrap"
 import PropTypes from "prop-types"
 import {Button} from "react-bootstrap"
+import { useShoppingCar } from "../../../hooks/useShoppingCar"
 
 const AddProduct = ({
   xs,
@@ -10,6 +11,9 @@ const AddProduct = ({
   md,
   lg
 }) => {
+  const { products } = useShoppingCar()
+  console.log(products)
+
   return (
     <Col xs={xs} sm={sm} md={md} lg={lg}>
       <Card>
@@ -50,7 +54,7 @@ const AddProduct = ({
         {/* Nombre end */}
         <div className="flex">
           <Button className="btn-send" variant="outline-light" size="sm">
-            Eliminar
+            Añadir
           </Button>
         </div>
       </Card>
