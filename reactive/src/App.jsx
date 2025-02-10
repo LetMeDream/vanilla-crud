@@ -8,15 +8,22 @@ import DeleteProduct from './components/Sections/DeleteProduct/DeleteProduct';
 function App() {
 
   return (
+    <div className='main'>
+      <h1 className='app-title'>
+        Shopping Car
+      </h1>
       <Container>
         <Row>
-          <AddProduct />
-          <EditProduct />
+          <AddProduct xs={12} md={6} lg={4}/>
+          <EditProduct xs={12} md={6} lg={4}/>
+          <DeleteProduct
+            xs={12} md={12} lg={4} 
+            classnames='mt-md-4 mt-lg-0'
+          />
         </Row>
-        <Row className='mt-2'>
-          <DeleteProduct />
-        </Row>
+
       </Container>
+    </div>
   )
 }
 

@@ -6,10 +6,42 @@ body, #root {
   min-height: 100vh;
   display: flex;
   align-items: center;
+  justify-content: center;
+}
+
+.main {
+  width:90%
 }
 
 .section {
   background-color: #2D4263;
   padding: 40px;
   border-radius: 4.5px;
+}
+
+.input, .btn-send {
+  width: 75% !important;
+  margin: auto !important
+}
+
+.section-title {
+  font-size:26px;
+  text-align: center;
+  margin-bottom: 20px;
+  user-select: none;
+}
+
+.debug { 
+  border: 1px solid red !important;
+}
+
+.app-title {
+  font-size: 36px;
+  text-align: center;
+  margin-bottom: 20px;
+  user-select: none;
+}
+
+.flex {
+  display:flex;
 }
