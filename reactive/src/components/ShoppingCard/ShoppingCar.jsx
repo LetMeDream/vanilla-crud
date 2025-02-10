@@ -1,7 +1,7 @@
 import { Row, Container } from 'react-bootstrap'
-import AddProduct from '../../components/Sections/AddProduct/AddProduct';
-import EditProduct from '../../components/Sections/EditProduct/EditProduct';
-import DeleteProduct from '../../components/Sections/DeleteProduct/DeleteProduct';
+import AddProduct from '../Sections/AddProduct';
+import EditProduct from '../Sections/EditProduct';
+import DeleteProduct from '../Sections/DeleteProduct';
 
 const ShoppingCar = () => {
   return (
