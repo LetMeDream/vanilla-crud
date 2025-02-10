@@ -1,7 +1,7 @@
-import Card from "../../Card/Card"
+import Card from "../Card/Card"
 import { Col } from "react-bootstrap"
-import SelectInput from "../../Inputs/SelectInput/SelectInput"
-import TextInput from "../../Inputs/TextInput/TextInput"
+import SelectInput from "../Inputs/SelectInput/SelectInput"
+import TextInput from "../Inputs/TextInput/TextInput"
 import PropTypes from "prop-types"
 import {Button} from "react-bootstrap"
 

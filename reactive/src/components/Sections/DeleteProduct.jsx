@@ -1,7 +1,7 @@
-import Card from "../../Card/Card"
+import Card from "../Card/Card"
 import { Col } from "react-bootstrap"
 import PropTypes from "prop-types"
-import SelectInput from "../../Inputs/SelectInput/SelectInput"
+import SelectInput from "../Inputs/SelectInput/SelectInput"
 import {Button} from "react-bootstrap"
 
 const DeleteProduct = ({
