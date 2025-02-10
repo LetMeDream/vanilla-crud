@@ -7,7 +7,7 @@ function SelectInput({
   itemToSelect
 }) {
   return (
-    <Form.Group className='input'>
+    <Form.Group className='input my-3'>
       <Form.Text id="passwordHelpBlock" className='text'>
         {title}
       </Form.Text>
