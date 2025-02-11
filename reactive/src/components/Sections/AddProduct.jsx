@@ -2,9 +2,11 @@ import Card from "../Card/Card"
 import TextInput from "../Inputs/TextInput/TextInput"
 import { Col } from "react-bootstrap"
 import PropTypes from "prop-types"
-import {Button} from "react-bootstrap"
 import { useShoppingCar } from "../../hooks/useShoppingCar"
 import { useForm, FormProvider } from "react-hook-form";
+import { addProductForm } from "../../constants/Schemas"
+import { yupResolver } from '@hookform/resolvers/yup';
+import CustomButton from "../Shared/CustomButton"
 
 const AddProduct = ({
   xs,
@@ -13,7 +15,9 @@ const AddProduct = ({
   lg
 }) => {
   useShoppingCar()
-  const methods = useForm();
+  const methods = useForm({
+    resolver: yupResolver(addProductForm)
+  });
   const { register, handleSubmit } = methods;
   const onSubmit = data => console.log(data);
 
@@ -22,7 +26,10 @@ const AddProduct = ({
     <Col xs={xs} sm={sm} md={md} lg={lg}>
       <FormProvider {...methods}>
         <Card>
-          <form onSubmit={handleSubmit(onSubmit)}>
+          <form 
+            onSubmit={handleSubmit(onSubmit)}
+
+          >
             <h1 className="section-title">
               Añadir
             </h1>
@@ -63,9 +70,11 @@ const AddProduct = ({
             />
             {/* Nombre end */}
             <div className="flex">
-              <Button className="btn-send" variant="outline-light" size="sm" type='submit'>
-                Añadir
-              </Button>
+              <CustomButton
+                text={'Agregar'}
+                buttonType={'submit'}
+                classnames={'mt-2'}
+              />
             </div>
           </form>
         </Card>
