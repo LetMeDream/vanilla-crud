@@ -21,8 +21,8 @@ body, #root {
 }
 
 .input, .btn-send {
-  width: 75% !important;
-  margin: auto !important
+  width: 75%;
+  margin: 0 auto;
 }
 
 .section-title {
