@@ -1,27 +1,40 @@
 import './TextInput.css' 
 import Form from 'react-bootstrap/Form';
 import PropTypes from 'prop-types';
+import {useTextInput} from '../../../hooks/useInputs'
+import classNames from 'classnames';
 
 const TextInput = ({ 
   title,
   type,
   id,
   placeholder,
-  register
+  register,
+  autoComplete = false
  }) => {
+  const { error, isError } = useTextInput(id)
+
   return (
-    <Form.Group className='input my-3'>
+    <Form.Group  
+      className={classNames('input my-3 relative', {
+        errorClass: isError
+      })}
+    >
       <Form.Text id="passwordHelpBlock" className='text'>
         {title}
       </Form.Text>
       <Form.Control
-        {...(register ? register(id) : {})} /* <- Condicional para evitar que 'TextInputs' sin 'register' crasheen. */
+        {...(register ? register(id) : {})} /* <- Condicional para evitar que los 'TextInputs' sin el prop 'register' crasheen. */
         size='sm'
         type={type}
         id={id}
         aria-describedby="passwordHelpBlock"
         placeholder={placeholder}
-      />
+        autoComplete={!autoComplete ? 'off' : 'on' }
+      />    
+      <span className='error-msg'>
+        {error?.message}
+      </span>
     </Form.Group>
   )
 }
@@ -32,7 +45,8 @@ TextInput.propTypes = {
   type: PropTypes.string,
   id: PropTypes.string,
   placeholder: PropTypes.string,
-  register: PropTypes.func
+  register: PropTypes.func,
+  autoComplete: PropTypes.bool
 }
 
 export default TextInput
