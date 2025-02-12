@@ -1,12 +1,23 @@
+* {
+  box-sizing: border-box;
+}
+
 body, #root {
   font-family: 'Space Grotesk', sans-serif;
   background-color: #141C29;
   color:white;
-  width: 100vw;
   min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+body{
+  max-width: 100vw;
+}
+
+#root {
+  width:100%;
 }
 
 .main {
@@ -32,7 +43,7 @@ body, #root {
   user-select: none;
 }
 
-.debug { 
+.debug{ 
   border: 1px solid red !important;
 }
 

@@ -2,8 +2,14 @@ import { Row, Container } from 'react-bootstrap'
 import AddProduct from '../Sections/AddProduct';
 import EditProduct from '../Sections/EditProduct';
 import DeleteProduct from '../Sections/DeleteProduct';
+import PropTypes from 'prop-types';
 
-const ShoppingCar = () => {
+const ShoppingCar = ({
+  setProducts,
+  lastlyAddedProductId,
+  setLastlyAddedProductId
+}) => {
+
   return (
     <>
       <h1 className='shopping-car-title'>
@@ -11,7 +17,11 @@ const ShoppingCar = () => {
       </h1>
       <Container>
         <Row>
-          <AddProduct xs={12} md={6} lg={4}/>
+          <AddProduct xs={12} md={6} lg={4}
+            setProducts={setProducts}
+            lastlyAddedProductId={lastlyAddedProductId}
+            setLastlyAddedProductId={setLastlyAddedProductId}
+          />
           <EditProduct xs={12} md={6} lg={4}/>
           <DeleteProduct
             xs={12} md={12} lg={4} 
@@ -22,6 +32,12 @@ const ShoppingCar = () => {
       </Container>
     </>
   )
+}
+
+ShoppingCar.propTypes = {
+  setProducts: PropTypes.array,
+  lastlyAddedProductId: PropTypes.string,
+  setLastlyAddedProductId: PropTypes.func
 }
 
 export default ShoppingCar

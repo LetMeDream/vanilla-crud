@@ -1,4 +1,4 @@
-import Card from "../Card/Card"
+import Card from "../FormCard/FormCard"
 import { Col } from "react-bootstrap"
 import PropTypes from "prop-types"
 import SelectInput from "../Inputs/SelectInput/SelectInput"
@@ -9,11 +9,13 @@ const DeleteProduct = ({
   sm,
   md, 
   lg, 
-  classnames
+  classnames = ''
 }) => {
   return (
-    <Col xs={xs} sm={sm} md={md} lg={lg}>
-      <Card classname={classnames}>
+    <Col xs={xs} sm={sm} md={md} lg={lg}
+      className={classnames}
+    >
+      <Card>
         <h1 className="section-title">
           Eliminar
         </h1>

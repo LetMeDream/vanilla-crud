@@ -30,6 +30,7 @@ FormToast.propTypes = {
 }
 
 export function WithActions({ closeToast, data }) {
+
   return (
     <div className="with-actions-container">
       <h3 className="with-actions-title">
@@ -41,7 +42,7 @@ export function WithActions({ closeToast, data }) {
 
         <div className="with-actions-buttons">
           <button
-            onClick={closeToast}
+            onClick={data?.action}
             className="with-actions-button-undo"
           >
             Undo
@@ -61,4 +62,35 @@ export function WithActions({ closeToast, data }) {
 WithActions.propTypes = {
   closeToast: PropTypes.func,
   data: PropTypes.object
+}
+
+export function CustomNotification({
+  closeToast,
+  data,
+}) {
+
+  return (
+    <div className="notification-container">
+      <h3
+        className='notification-title notification-title-default'
+      >
+        {data?.title}
+      </h3>
+      <div className="notification-body">
+        <p className="notification-content">{data?.content}</p>
+        <button
+          onClick={closeToast}
+          className='notification-button'
+        >
+          Ok
+        </button>
+      </div>
+    </div>
+  );
+}
+
+CustomNotification.propTypes = {
+  closeToast: PropTypes.func,
+  data: PropTypes.object,
+  toastProps: PropTypes.object
 }

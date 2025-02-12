@@ -1,43 +1,62 @@
-import Card from "../Card/Card"
+import Card from "../FormCard/FormCard"
 import TextInput from "../Inputs/TextInput/TextInput"
 import { Col } from "react-bootstrap"
 import PropTypes from "prop-types"
-import { useShoppingCar } from "../../hooks/useShoppingCar"
-import { useForm, FormProvider } from "react-hook-form";
+import { useForm, FormProvider } from "react-hook-form"
 import { addProductForm } from "../../constants/Schemas"
-import { yupResolver } from '@hookform/resolvers/yup';
+import { yupResolver } from '@hookform/resolvers/yup'
 import CustomButton from "../Shared/CustomButton"
-import { toast } from 'react-toastify'
-import {  WithActions } from "../Shared/Toasts/Toasts"
+import { v4 as uuidv4 } from 'uuid'
+import { useState } from "react"
+import { errorToast, actionToast } from "../../helpers/toasts"
 
 const AddProduct = ({
   xs,
   sm,
   md,
-  lg
+  lg,
+  setProducts,
+  classnames = ''
 }) => {
-  useShoppingCar()
   const methods = useForm({
     resolver: yupResolver(addProductForm)
   });
-  const { register, handleSubmit, trigger } = methods;
-  const onSubmit = data => console.log(data);
+  const [idForProduct, setIdForProduct] = useState(uuidv4())
+  const { register, handleSubmit, trigger, reset } = methods;
+  const onSubmit = async data => { 
+    data = {
+      ...data,
+      idForProduct
+    }
+    setProducts(previousProducts => [...previousProducts, data]) 
+    reset()
+  }
+
+  /* Función para 'deshacer' la creació del producto recientemente creado. */
+  const undoRecentlyCreatedProduct = () => {
+    alert(idForProduct)
+  }
 
   const onClick = async () => {
-    console.log(await trigger())
-    if (await trigger()) { 
-      toast(WithActions, {
-        data:{
-          title: 'Éxito!',
-          content: 'El producto ha sido añadido'
-        },
-        autoClose: false
+    if (await trigger()) { // trigger() devuelve true si el formulario no posee errores.
+      actionToast({
+        title: 'Èxito!',
+        content: 'El producto ha sido añadido',
+        action: undoRecentlyCreatedProduct
+      })
+      setIdForProduct(uuidv4())
+    } else {
+      errorToast({
+        title: 'Ups!',
+        content: 'Revise los errores del formulario'
       })
     }
   }
 
   return (
-    <Col xs={xs} sm={sm} md={md} lg={lg}>
+    <Col xs={xs} sm={sm} md={md} lg={lg}
+      classnames={classnames}
+    >
       <FormProvider {...methods}>
         <Card>
           <form 
@@ -89,6 +108,7 @@ const AddProduct = ({
               />
             </div>
           </form>
+          {idForProduct}
         </Card>
       </FormProvider>
     </Col>
@@ -99,7 +119,11 @@ AddProduct.propTypes = {
   xs: PropTypes.number,
   sm: PropTypes.number,
   md: PropTypes.number,
-  lg: PropTypes.number
+  lg: PropTypes.number,
+  setProducts: PropTypes.array,
+  classnames: PropTypes.string,
+  lastlyAddedProductId: PropTypes.string,
+  setLastlyAddedProductId: PropTypes.func
 }
 
 export default AddProduct

@@ -1,4 +1,4 @@
-import Card from "../Card/Card"
+import Card from "../FormCard/FormCard"
 import { Col } from "react-bootstrap"
 import SelectInput from "../Inputs/SelectInput/SelectInput"
 import TextInput from "../Inputs/TextInput/TextInput"
@@ -11,14 +11,14 @@ const EditProduct = ({
   sm,
   md, 
   lg, 
-  classnames
+  classnames = ''
 }) => {
   const methods = useForm()
 
   return (
-    <Col  xs={xs} sm={sm} md={md} lg={lg}>
+    <Col  xs={xs} sm={sm} md={md} lg={lg} classnames={classnames}>
       <FormProvider {...methods}>
-        <Card classnames={classnames}>  
+        <Card>  
           <h1 className="section-title">
             Editar
           </h1>
@@ -59,7 +59,7 @@ EditProduct.propTypes = {
   sm: PropTypes.number,
   md: PropTypes.number,
   lg: PropTypes.number,
-  classnames: PropTypes.string
+  classnames: PropTypes.string,
 }
 
 export default EditProduct
