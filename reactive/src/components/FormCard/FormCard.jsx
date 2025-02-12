@@ -1,9 +1,9 @@
 import PropTypes from 'prop-types'
 
 
-const Card = ({ children, classname }) => {
+const Card = ({ children }) => {
   return (
-      <div className={`section ${classname}`}>
+      <div className={`section`}>
         { children || 'Empty section. Provide content.' }
       </div>
   )
@@ -11,7 +11,6 @@ const Card = ({ children, classname }) => {
 
 Card.propTypes = {
   children: PropTypes.node,
-  classname: PropTypes.string
 }
 
 export default Card
