@@ -7,7 +7,8 @@ const CustomButton = ({
   classnames,
   outline = true,
   type = 'light',
-  buttonType
+  buttonType = '',
+  onClick
 }) => {
   return (
     <Button 
@@ -16,6 +17,7 @@ const CustomButton = ({
       variant={outline ? `outline-${type}` : type}
       size="sm"
       type={buttonType}
+      onClick={onClick ? onClick : null}
     >
       {text}
     </Button>
@@ -27,7 +29,8 @@ CustomButton.propTypes = {
   classnames: PropTypes.string,
   outline: PropTypes.bool,
   type: PropTypes.string,
-  buttonType: PropTypes.string
+  buttonType: PropTypes.string,
+  onClick: PropTypes.func
 }
 
 export default CustomButton
