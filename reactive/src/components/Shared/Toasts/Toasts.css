@@ -66,6 +66,7 @@
   padding-top: 0.5rem; /* 8px */
   padding-bottom: 0.5rem; /* 8px */
   color: #4c51bf; /* Indigo 600 */
+  border: 1px solid transparent;
 }
 
 .with-actions-button-dismiss {
@@ -78,8 +79,15 @@
   padding-top: 0.5rem; /* 8px */
   padding-bottom: 0.5rem; /* 8px */
   color: #cbd5e0; /* Grey 400 */
+  border: 1px solid transparent;
 }
 
-.with-actions-button-active {
-  transform: scale(0.95);
+.with-actions-button-dismiss:hover {
+  color: #a0aec0; /* Darker Grey */
+  border-color: #a0aec0;
+}
+
+.with-actions-button-dismiss:active {
+  color: #718096; /* Even Darker Grey */
+  border-color: #718096;
 }

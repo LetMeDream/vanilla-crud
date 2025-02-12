@@ -42,13 +42,13 @@ export function WithActions({ closeToast, data }) {
         <div className="with-actions-buttons">
           <button
             onClick={closeToast}
-            className="with-actions-button-undo active:with-actions-button-active"
+            className="with-actions-button-undo"
           >
             Undo
           </button>
           <button
             onClick={closeToast}
-            className="with-actions-button-dismiss active:with-actions-button-active"
+            className="with-actions-button-dismiss"
           >
             Dismiss
           </button>

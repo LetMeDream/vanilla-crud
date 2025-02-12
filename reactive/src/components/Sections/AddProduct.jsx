@@ -7,6 +7,8 @@ import { useForm, FormProvider } from "react-hook-form";
 import { addProductForm } from "../../constants/Schemas"
 import { yupResolver } from '@hookform/resolvers/yup';
 import CustomButton from "../Shared/CustomButton"
+import { toast } from 'react-toastify'
+import {  WithActions } from "../Shared/Toasts/Toasts"
 
 const AddProduct = ({
   xs,
@@ -18,9 +20,21 @@ const AddProduct = ({
   const methods = useForm({
     resolver: yupResolver(addProductForm)
   });
-  const { register, handleSubmit } = methods;
+  const { register, handleSubmit, trigger } = methods;
   const onSubmit = data => console.log(data);
 
+  const onClick = async () => {
+    console.log(await trigger())
+    if (await trigger()) { 
+      toast(WithActions, {
+        data:{
+          title: 'Éxito!',
+          content: 'El producto ha sido añadido'
+        },
+        autoClose: false
+      })
+    }
+  }
 
   return (
     <Col xs={xs} sm={sm} md={md} lg={lg}>
@@ -41,7 +55,6 @@ const AddProduct = ({
               placeholder={'Nombre del producto'}
               register={register}
             />
-            {/* Nombre end */}
             {/* Valor start */}
             <TextInput
               title='Valor del producto'
@@ -50,7 +63,6 @@ const AddProduct = ({
               placeholder={'Valor del producto'}
               register={register}
             />
-            {/* Valor end */}
             {/* Existencia */}
             <TextInput
               title='Existencia'
@@ -58,9 +70,8 @@ const AddProduct = ({
               id='product-existance'
               placeholder={'Productos en existencia'}
               register={register}
-              /* Existencia */
             />
-            {/* Nombre start */}
+            {/* Url start */}
             <TextInput
               title='Url Imagen'
               type='text'
@@ -68,12 +79,13 @@ const AddProduct = ({
               placeholder={'URL de imagen del producto'}
               register={register}
             />
-            {/* Nombre end */}
+            {/* Agregar btn */}
             <div className="flex">
               <CustomButton
                 text={'Agregar'}
                 buttonType={'submit'}
                 classnames={'mt-2'}
+                onClick={onClick}
               />
             </div>
           </form>
