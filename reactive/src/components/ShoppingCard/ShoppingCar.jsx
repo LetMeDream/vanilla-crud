@@ -5,9 +5,7 @@ import DeleteProduct from '../Sections/DeleteProduct';
 import PropTypes from 'prop-types';
 
 const ShoppingCar = ({
-  setProducts,
-  lastlyAddedProductId,
-  setLastlyAddedProductId
+  setProducts
 }) => {
 
   return (
@@ -19,8 +17,6 @@ const ShoppingCar = ({
         <Row>
           <AddProduct xs={12} md={6} lg={4}
             setProducts={setProducts}
-            lastlyAddedProductId={lastlyAddedProductId}
-            setLastlyAddedProductId={setLastlyAddedProductId}
           />
           <EditProduct xs={12} md={6} lg={4}/>
           <DeleteProduct

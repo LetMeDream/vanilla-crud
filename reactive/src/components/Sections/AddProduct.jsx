@@ -108,7 +108,7 @@ const AddProduct = ({
               />
             </div>
           </form>
-          {idForProduct}
+          {/* {idForProduct} */}
         </Card>
       </FormProvider>
     </Col>
@@ -122,7 +122,6 @@ AddProduct.propTypes = {
   lg: PropTypes.number,
   setProducts: PropTypes.array,
   classnames: PropTypes.string,
-  lastlyAddedProductId: PropTypes.string,
   setLastlyAddedProductId: PropTypes.func
 }
 

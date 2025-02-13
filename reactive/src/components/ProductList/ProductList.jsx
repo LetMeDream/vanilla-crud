@@ -1,12 +1,13 @@
 import './ProductList.css'
 import { Row, Container, Col } from 'react-bootstrap'
 import PropTypes from 'prop-types'
+import Product from './Product'
 
 const ProductList = ({
   products
 }) => {
   return (
-    <Container>
+    <Container className='mt-4 mb-4'>
       <Row>
         {
           (products?.length > 0) ?
@@ -16,9 +17,9 @@ const ProductList = ({
                 xs={4}
                 key={product?.id}
               >
-                <div className='product-list-container'>
-                  ProductList
-                </div>
+                <Product 
+                  product={product}
+                />
               </Col>
             )
           }) : 'nada'

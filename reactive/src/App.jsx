@@ -6,15 +6,13 @@ import { ToastContainer } from 'react-toastify';
 import { useShoppingCar } from './hooks/useShoppingCar';
 
 function App() {
-  const { setProducts, products, lastlyAddedProductId, setLastlyAddedProductId } = useShoppingCar()
+  const { setProducts, products } = useShoppingCar()
 
   return (
     <div className='main'>
       <ToastContainer />
       <ShoppingCar
         setProducts={setProducts}
-        lastlyAddedProductId={lastlyAddedProductId}
-        setLastlyAddedProductId={setLastlyAddedProductId}
       />
 
       { products?.length > 0 ? 
