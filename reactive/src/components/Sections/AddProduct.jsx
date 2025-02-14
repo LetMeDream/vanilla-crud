@@ -21,30 +21,49 @@ const AddProduct = ({
   const methods = useForm({
     resolver: yupResolver(addProductForm)
   });
-  const [idForProduct, setIdForProduct] = useState(uuidv4())
-  const { register, handleSubmit, trigger, reset } = methods;
+  const [idForPreviousProduct, setIdForPreviousProduct] = useState(null)
+  const [idForCurrentProduct, setIdForCurrentProduct] = useState(uuidv4())
+  // const [restoredProductIId ,setRestoredProductIId] = useState(idForCurrentProduct)
+  const { register, handleSubmit, trigger, reset, getValues, setValue } = methods;
   const onSubmit = async data => { 
     data = {
       ...data,
-      idForProduct
+      id: idForPreviousProduct
     }
     setProducts(previousProducts => [...previousProducts, data]) 
     reset()
   }
 
-  /* Función para 'deshacer' la creació del producto recientemente creado. */
-  const undoRecentlyCreatedProduct = () => {
-    alert(idForProduct)
+  /* Función para 'deshacer' la creación del producto recientemente creado. */
+  const undoRecentlyCreatedProduct = (recentlyCreatedProduct) => {
+    if (confirm('¿Desea deshacer la acción?')) {
+      Object.keys(recentlyCreatedProduct).forEach(key => {
+        if (key.toLowerCase() === 'id') return
+        setValue(key, recentlyCreatedProduct[key])
+      });
+      setProducts(prevProducts => {
+        let newProduct = prevProducts.filter(product => product.id !== idForCurrentProduct)
+        return newProduct
+      })
+      return true // Devolvemos true, si el user deshizo el añadido del producto, para quitar el toast.
+    }
+    return false // o devolvemos false, para no quitarlo.
   }
 
   const onClick = async () => {
+    const formData = getValues();
+    const newProduct = {
+      ...formData,
+      id: idForCurrentProduct
+    };
     if (await trigger()) { // trigger() devuelve true si el formulario no posee errores.
       actionToast({
         title: 'Èxito!',
         content: 'El producto ha sido añadido',
-        action: undoRecentlyCreatedProduct
+        action: () => undoRecentlyCreatedProduct(newProduct)
       })
-      setIdForProduct(uuidv4())
+      setIdForPreviousProduct(idForCurrentProduct)
+      setIdForCurrentProduct(uuidv4())
     } else {
       errorToast({
         title: 'Ups!',
@@ -108,7 +127,6 @@ const AddProduct = ({
               />
             </div>
           </form>
-          {/* {idForProduct} */}
         </Card>
       </FormProvider>
     </Col>

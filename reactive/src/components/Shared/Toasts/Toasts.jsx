@@ -31,6 +31,12 @@ FormToast.propTypes = {
 
 export function WithActions({ closeToast, data }) {
 
+  const action = () => {
+    if (data?.action(data?.idForCurrentProduct)){
+      closeToast()
+    }
+  }
+
   return (
     <div className="with-actions-container">
       <h3 className="with-actions-title">
@@ -42,7 +48,7 @@ export function WithActions({ closeToast, data }) {
 
         <div className="with-actions-buttons">
           <button
-            onClick={data?.action}
+            onClick={action}
             className="with-actions-button-undo"
           >
             Undo
