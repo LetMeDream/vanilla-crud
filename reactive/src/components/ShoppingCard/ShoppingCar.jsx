@@ -7,7 +7,6 @@ import PropTypes from 'prop-types';
 const ShoppingCar = ({
   setProducts
 }) => {
-
   return (
     <>
       <h1 className='shopping-car-title'>
@@ -18,10 +17,12 @@ const ShoppingCar = ({
           <AddProduct xs={12} md={6} lg={4}
             setProducts={setProducts}
           />
-          <EditProduct xs={12} md={6} lg={4}/>
+          <EditProduct xs={12} md={6} lg={4}
+            classnames='mt-sm-4 mt-lg-0'
+          />
           <DeleteProduct
             xs={12} md={12} lg={4} 
-            classnames='mt-md-4 mt-lg-0'
+            classnames='mt-sm-4 mt-lg-0'
           />
         </Row>
 
@@ -32,8 +33,6 @@ const ShoppingCar = ({
 
 ShoppingCar.propTypes = {
   setProducts: PropTypes.array,
-  lastlyAddedProductId: PropTypes.string,
-  setLastlyAddedProductId: PropTypes.func
 }
 
 export default ShoppingCar

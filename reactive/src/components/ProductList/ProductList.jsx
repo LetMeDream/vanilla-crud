@@ -16,6 +16,7 @@ const ProductList = ({
               <Col 
                 xs={4}
                 key={product?.id}
+                className='px-4'
               >
                 <Product 
                   product={product}

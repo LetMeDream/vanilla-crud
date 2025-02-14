@@ -16,7 +16,7 @@ const EditProduct = ({
   const methods = useForm()
 
   return (
-    <Col  xs={xs} sm={sm} md={md} lg={lg} classnames={classnames}>
+    <Col  xs={xs} sm={sm} md={md} lg={lg} className={classnames}>
       <FormProvider {...methods}>
         <Card>  
           <h1 className="section-title">
