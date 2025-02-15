@@ -1,12 +1,13 @@
 import PropTypes from "prop-types"
 import { DollarSign } from 'lucide-react';
+import { Image } from "react-bootstrap";
 
 const Product = ({
   product
 }) => {
   return (
     <div className="card">
-      <img
+      <Image fluid
         src={product?.['product-url-image']}
         alt={product?.['product-name']}
         className="card-image"
