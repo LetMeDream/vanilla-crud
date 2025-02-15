@@ -3,7 +3,7 @@ import TextInput from "../Inputs/TextInput/TextInput"
 import { Col } from "react-bootstrap"
 import PropTypes from "prop-types"
 import { useForm, FormProvider } from "react-hook-form"
-import { addProductForm } from "../../constants/Schemas"
+import { addProductFormSchema } from "../../constants/Schemas"
 import { yupResolver } from '@hookform/resolvers/yup'
 import CustomButton from "../Shared/CustomButton"
 import { v4 as uuidv4 } from 'uuid'
@@ -20,7 +20,7 @@ const AddProduct = ({
   classnames = ''
 }) => {
   const methods = useForm({
-    resolver: yupResolver(addProductForm)
+    resolver: yupResolver(addProductFormSchema)
   });
   const [idForPreviousProduct, setIdForPreviousProduct] = useState(null)
   const [idForCurrentProduct, setIdForCurrentProduct] = useState(uuidv4())
