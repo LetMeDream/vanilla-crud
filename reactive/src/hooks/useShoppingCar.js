@@ -1,10 +1,11 @@
 import { useState, useEffect } from "react"
+import { getFromLocalStorage } from "../helpers/localStorage"
 
 export const useShoppingCar = () => {
-    const [products, setProducts] = useState([])
+    const [products, setProducts] = useState(getFromLocalStorage('products') || [])
 
     useEffect(() => {
-        if (products?.length) console.log(products)
+        console.log(products)
     }, [products])
 
     return {

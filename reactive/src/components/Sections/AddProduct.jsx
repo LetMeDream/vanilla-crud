@@ -9,6 +9,7 @@ import CustomButton from "../Shared/CustomButton"
 import { v4 as uuidv4 } from 'uuid'
 import { useState } from "react"
 import { errorToast, actionToast } from "../../helpers/toasts"
+import { saveToLocalStorage } from "../../helpers/localStorage"
 
 const AddProduct = ({
   xs,
@@ -30,7 +31,10 @@ const AddProduct = ({
       ...data,
       id: idForPreviousProduct
     }
-    setProducts(previousProducts => [...previousProducts, data]) 
+    setProducts(previousProducts => {
+      saveToLocalStorage('products', [...previousProducts, data])
+      return [...previousProducts, data]
+    }) 
     reset()
   }
 
@@ -43,6 +47,7 @@ const AddProduct = ({
       });
       setProducts(prevProducts => {
         let newProduct = prevProducts.filter(product => product.id !== idForCurrentProduct)
+        saveToLocalStorage('products', newProduct)
         return newProduct
       })
       return true // Devolvemos true, si el user deshizo el añadido del producto, para quitar el toast.
@@ -96,7 +101,7 @@ const AddProduct = ({
             {/* Valor start */}
             <TextInput
               title='Valor del producto'
-              type='number'
+              type='text'
               id='product-value'
               placeholder={'Valor del producto'}
               register={register}
@@ -104,7 +109,7 @@ const AddProduct = ({
             {/* Existencia */}
             <TextInput
               title='Existencia'
-              type='number'
+              type='text'
               id='product-existance'
               placeholder={'Productos en existencia'}
               register={register}
