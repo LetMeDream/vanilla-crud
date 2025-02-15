@@ -13,6 +13,7 @@ function App() {
       <ToastContainer />
       <ShoppingCar
         setProducts={setProducts}
+        products={products}
       />
 
       { products?.length > 0 ? 

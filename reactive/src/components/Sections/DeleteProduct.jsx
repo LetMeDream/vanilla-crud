@@ -9,7 +9,8 @@ const DeleteProduct = ({
   sm,
   md, 
   lg, 
-  classnames = ''
+  classnames = '',
+  products
 }) => {
   return (
     <Col xs={xs} sm={sm} md={md} lg={lg}
@@ -23,6 +24,7 @@ const DeleteProduct = ({
         <SelectInput 
           title={'Producto'}
           itemToSelect={'producto'}
+          products={products}
         />  
         {/* Nombre end */}
         <div className="flex">
@@ -40,7 +42,8 @@ DeleteProduct.propTypes = {
   sm: PropTypes.number,
   md: PropTypes.number,
   lg: PropTypes.number,
-  classnames: PropTypes.string
+  classnames: PropTypes.string,
+  products: PropTypes.array
 }
 
 export default DeleteProduct

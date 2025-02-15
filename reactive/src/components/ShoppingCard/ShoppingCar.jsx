@@ -5,7 +5,8 @@ import DeleteProduct from '../Sections/DeleteProduct';
 import PropTypes from 'prop-types';
 
 const ShoppingCar = ({
-  setProducts
+  setProducts,
+  products
 }) => {
   return (
     <>
@@ -18,11 +19,12 @@ const ShoppingCar = ({
             setProducts={setProducts}
           />
           <EditProduct xs={12} md={6} lg={4}
-            classnames='mt-sm-4 mt-lg-0'
+            classnames='mt-sm-4 mt-md-0'
           />
           <DeleteProduct
             xs={12} md={12} lg={4} 
             classnames='mt-sm-4 mt-lg-0'
+            products={products}
           />
         </Row>
 
@@ -32,7 +34,8 @@ const ShoppingCar = ({
 }
 
 ShoppingCar.propTypes = {
-  setProducts: PropTypes.array,
+  setProducts: PropTypes.func,
+  products: PropTypes.array
 }
 
 export default ShoppingCar
