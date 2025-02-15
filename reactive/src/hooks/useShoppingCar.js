@@ -5,7 +5,7 @@ export const useShoppingCar = () => {
     const [products, setProducts] = useState(getFromLocalStorage('products') || [])
 
     useEffect(() => {
-        console.log(products)
+        // console.log(products)
     }, [products])
 
     return {
