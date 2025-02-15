@@ -21,6 +21,6 @@ export const actionToast = ({ title, content, action, idForCurrentProduct }) => 
       action,
       idForCurrentProduct
     }, 
-    autoClose: false
+    // autoClose: false
   })
 }

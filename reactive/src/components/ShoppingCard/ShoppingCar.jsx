@@ -25,6 +25,7 @@ const ShoppingCar = ({
             xs={12} md={12} lg={4} 
             classnames='mt-sm-4 mt-lg-0'
             products={products}
+            setProducts={setProducts}
           />
         </Row>
 
