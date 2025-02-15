@@ -5,7 +5,8 @@ function SelectInput({
   title,
   itemToSelect,
   id,
-  register
+  register,
+  products
 }) {
   return (
     <Form.Group className='input my-3'>
@@ -14,12 +15,14 @@ function SelectInput({
       </Form.Text>
       <Form.Select 
         size='sm' aria-label="Default select example"
-        {...(register ? register(id) : {})} /* <- Condicional para evitar que 'TextInputs' sin 'register' crasheen. */
+        {...(register ? register(id) : {})} /* <- Condicional para evitar que 'TextInputs' sin función 'register' crasheen. */
       >
         <option>Elija un {itemToSelect || ' item'}</option>
-        <option value="1">One</option>
-        <option value="2">Two</option>
-        <option value="3">Three</option>
+        {products?.map((product) => {
+          return  (<>
+            <option>{product?.['product-name']}</option>
+          </>)
+        })}
       </Form.Select>
     </Form.Group>
   );
@@ -30,7 +33,8 @@ SelectInput.propTypes = {
   title: PropTypes.string,
   itemToSelect: PropTypes.string,
   id: PropTypes.string,
-  register: PropTypes.func
+  register: PropTypes.func,
+  products: PropTypes.array
 }
 
 export default SelectInput;
